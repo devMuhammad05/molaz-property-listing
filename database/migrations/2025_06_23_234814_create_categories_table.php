@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('listings', function (Blueprint $table) {
-            $table->string('units_left')->after('property_type');
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('listings', function (Blueprint $table) {
-            $table->dropColumn('units_left');
-        });
+        Schema::dropIfExists('categories');
     }
 };

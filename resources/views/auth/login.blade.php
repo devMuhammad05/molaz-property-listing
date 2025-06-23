@@ -20,7 +20,7 @@
                                 fill="#7367F0" />
                         </svg>
                     </span>
-                    <span class="app-brand-text demo text-heading fw-bold">Migra</span>
+                    <span class="app-brand-text demo text-heading fw-bold">Molaz Ventures</span>
                 </a>
             </div>
             <!-- /Logo -->
