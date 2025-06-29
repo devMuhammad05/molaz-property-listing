@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Livewire\Listing;
 use App\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('products',  ProductController::class);
     Route::resource('categories',  CategoryController::class);
+    Route::resource('brands',  BrandController::class);
 });
 
 

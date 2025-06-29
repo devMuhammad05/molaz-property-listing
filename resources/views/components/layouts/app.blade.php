@@ -172,9 +172,9 @@
 
                     <li @class([
                         'menu-item',
-                        'active' => request()->routeIs('admin.products.*'),
+                        'active' => request()->routeIs('admin.brands.*'),
                     ])>
-                        <a href="{{ route('admin.products.index') }}" class="menu-link">
+                        <a href="{{ route('admin.brands.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-app-window"></i>
                             <div data-i18n="Page 2">Brands</div>
                         </a>
