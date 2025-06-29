@@ -16,13 +16,13 @@
                             placeholder="Product Name" required />
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label class="form-label" for="tag">Product Category</label>
                         <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example"
-                            name="category">
-                            <option value="" selected>Select a Category</option>
+                            name="category_id">
+                            <option disabled selected>Select a Category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ old('category', $category->value) }}">
+                                <option value="{{ old('category', $category->id) }}">
                                     {{ $category->name }}
                                 </option>
                             @endforeach
@@ -30,19 +30,38 @@
                         </select>
                     </div>
 
+                    <div class="col-md-6">
+                        <label class="form-label" for="tag">Product Brand</label>
+                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example"
+                            name="brand_id">
+                            <option  disabled selected>Select a Brand</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{ old('brand', $brand->id) }}">
+                                    {{ $brand->name }}
+                                </option>
+                            @endforeach
 
-                    <div class="row pt-3">
-                        <div class="col-md-6">
-                            <label class="form-label" for="name">City</label>
-                            <input type="text" id="city" name="city" value="{{ old('city') }}" class="form-control"
-                                placeholder="City" />
-                        </div>
+                        </select>
+                    </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label" for="amount">Amount</label>
-                            <input type="text" id="amount" name="amount" value="{{ old('amount') }}"
-                                class="form-control" placeholder="1000" required />
-                        </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label" for="name">Key Feature (seperate multiple with comma)</label>
+                        <input type="text" id="key_feature" name="key_feature" value="{{ old('key_feature') }}"
+                            class="form-control" placeholder="256GB Storage, A17 Pro Chip" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="amount">Amount</label>
+                        <input type="text" id="amount" name="amount" value="{{ old('amount') }}" class="form-control"
+                            placeholder="1000" required />
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="amount">Discount Amount</label>
+                        <input type="text" id="discount_amount" name="discount_amount" value="{{ old('discount_amount') }}" class="form-control"
+                            placeholder="9000" required />
                     </div>
 
                     <div class="col-md-12">
@@ -53,20 +72,6 @@
                         </div>
                     </div>
 
-                    <div class="row pt-3">
-                        <div class="col-md-6">
-                            <label class="form-label" for="name">Condition</label>
-                            <input type="text" id="condition" name="condition" value="{{ old('condition') }}"
-                                class="form-control" placeholder="Used" />
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="amount">Seller</label>
-                            <input type="text" id="seller" name="seller" value="{{ old('seller') }}"
-                                class="form-control" />
-                        </div>
-                    </div>
-
                     <div class="col-md-12">
                         <label for="formFile" class="form-label">Product Image Thumbnail</label>
                         <input class="form-control" type="file" name="image" id="formFile" required />
@@ -74,7 +79,7 @@
 
                     <div class="col-md-12">
                         <label class="form-label" for="units_left">Units Left</label>
-                        <input type="text" id="address" name="units_left" value="{{ old('units_left') }}"
+                        <input type="number" id="address" name="units_left" value="{{ old('units_left') }}"
                             class="form-control" placeholder="Enter units left" required />
 
                         </select>

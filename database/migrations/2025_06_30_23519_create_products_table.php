@@ -16,11 +16,11 @@ return new class extends Migration {
             $table->string('image');
             $table->string('slug');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('brand_id')->constrained()->onDelete('cascade');
+            $table->string('key_feature')->nullable();
             $table->string('description');
             $table->decimal('amount', 14, 2);
-            $table->string('city')->nullable();
-            $table->string('condition')->nullable();
-            $table->string('seller')->nullable();
+            $table->decimal('discount_amount', 14, 2)->default(0);
             $table->string('other_images')->nullable();
             $table->string('units_left');
             $table->boolean('is_active')->default(true);

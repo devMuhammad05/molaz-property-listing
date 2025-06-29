@@ -10,16 +10,17 @@ class Product extends Model
         'name',
         'image',
         'slug',
-        'category',
-        'amount',
+        'category_id',
+        'brand_id',
+        'key_feature',
         'description',
-        'city',
-        'condition',
-        'seller',
-        'is_active',
-        'units_left',
+        'amount',
+        'discount_amount',
         'other_images',
+        'units_left',
+        'is_active',
     ];
+
 
     public function scopeIsActive($query)
     {

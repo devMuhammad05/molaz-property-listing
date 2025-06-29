@@ -23,16 +23,18 @@ class StoreProduct extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', 'unique:products,name'],
-            'category' => ['required', 'string'],
+            'category_id' => ['required', 'integer', 'exists:categories,id'],
+            'brand_id' => ['required', 'integer', 'exists:brands,id'],
             'description' => ['required', 'string', 'max:600'],
-            'image' => ['required', 'image'],
-            'city' => ['nullable', 'string', 'max:255',],
+            'key_feature' => ['nullable', 'string', 'max:255'],
+            'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
             'amount' => ['required', 'numeric'],
-            'condition' => ['nullable', 'string', 'max:255',],
-            'seller' => ['nullable', 'string', 'max:255',],
+            'discount_amount' => ['nullable', 'numeric'],
             'units_left' => ['required', 'string'],
             'other_images' => ['nullable', 'array'],
             'other_images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
+            'is_active' => ['sometimes', 'boolean'],
         ];
+
     }
 }

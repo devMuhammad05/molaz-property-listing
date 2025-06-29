@@ -109,7 +109,7 @@
             <!-- Menu -->
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="{{ route('admin.listings.index') }}" class="app-brand-link">
+                    <a href="{{ route('admin.products.index') }}" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <svg width="32" height="22" viewBox="0 0 32 22" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -140,14 +140,8 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Page -->
-                    {{-- <li @class([ 'menu-item' , 'active'=> request()->routeIs('admin.dashboard'),
-                        ])>
-                        <a wire:navigate href="{{ route('admin.dashboard') }}" class="menu-link">
-                            <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                            <div data-i18n="Page 1">Dashboard</div>
-                        </a>
-                    </li> --}}
-                    <li @class([
+          
+                    {{-- <li @class([
                         'menu-item',
                         'active' => request()->routeIs('admin.listings.*'),
                     ])>
@@ -155,7 +149,7 @@
                             <i class="menu-icon tf-icons ti ti-app-window"></i>
                             <div data-i18n="Page 2">Listings</div>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li @class([
                         'menu-item',

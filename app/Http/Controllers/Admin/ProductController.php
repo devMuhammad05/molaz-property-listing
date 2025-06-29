@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\Category;
+use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProduct;
@@ -26,9 +27,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::cases();
+        $categories = Category::all();
+        $brands = Brand::all();
 
-        return view('admin.product.create', compact('categories'));
+        return view('admin.product.create', compact('categories', 'brands'));
     }
 
 
