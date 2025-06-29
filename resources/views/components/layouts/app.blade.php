@@ -140,11 +140,9 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Page -->
-          
-                    {{-- <li @class([
-                        'menu-item',
-                        'active' => request()->routeIs('admin.listings.*'),
-                    ])>
+
+                    {{-- <li @class([ 'menu-item' , 'active'=> request()->routeIs('admin.listings.*'),
+                        ])>
                         <a href="{{ route('admin.listings.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons ti ti-app-window"></i>
                             <div data-i18n="Page 2">Listings</div>
@@ -160,6 +158,29 @@
                             <div data-i18n="Page 2">Products</div>
                         </a>
                     </li>
+
+                    <li @class([
+                        'menu-item',
+                        'active' => request()->routeIs('admin.categories.*'),
+                    ])>
+                        <a href="{{ route('admin.categories.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-app-window"></i>
+                            <div data-i18n="Page 2">Categories</div>
+                        </a>
+                    </li>
+
+
+                    <li @class([
+                        'menu-item',
+                        'active' => request()->routeIs('admin.products.*'),
+                    ])>
+                        <a href="{{ route('admin.products.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons ti ti-app-window"></i>
+                            <div data-i18n="Page 2">Brands</div>
+                        </a>
+                    </li>
+
+
                 </ul>
             </aside>
             <!-- / Menu -->

@@ -40,7 +40,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         // Authentication passed...
-        return redirect(route('admin.listings.index'))
+        return redirect(route('admin.products.index'))
             ->with('success', 'Login successful');
     }
 
