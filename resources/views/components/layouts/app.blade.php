@@ -8,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Migra | Dashboard</title>
+    <title>Molaz Ventures | Dashboard</title>
 
     <meta name="description" content="" />
 
@@ -127,7 +127,7 @@
                                     fill="#7367F0" />
                             </svg>
                         </span>
-                        <span class="app-brand-text demo menu-text fw-bold">Migra</span>
+                        <span class="app-brand-text demo menu-text fw-bold">Molaz Ventures</span>
                     </a>
 
                     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
