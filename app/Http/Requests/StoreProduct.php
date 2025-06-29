@@ -29,7 +29,7 @@ class StoreProduct extends FormRequest
             'key_feature' => ['nullable', 'string', 'max:255'],
             'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
             'amount' => ['required', 'numeric'],
-            'discount_amount' => ['nullable', 'numeric'],
+            'discount_amount' => ['required', 'numeric'],
             'units_left' => ['required', 'string'],
             'other_images' => ['nullable', 'array'],
             'other_images.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
@@ -37,4 +37,17 @@ class StoreProduct extends FormRequest
         ];
 
     }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            $amount = $this->input('amount');
+            $discount = $this->input('discount_amount');
+
+            if (!is_null($discount) && $discount >= $amount) {
+                $validator->errors()->add('discount_amount', 'The selling amount must be less than the actual amount.');
+            }
+        });
+    }
+
 }

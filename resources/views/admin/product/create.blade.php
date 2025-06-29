@@ -22,7 +22,7 @@
                             name="category_id">
                             <option disabled selected>Select a Category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ old('category', $category->id) }}">
+                                <option value="{{ old('category', $category->id) }}" @selected($category->id == old('category'))>
                                     {{ $category->name }}
                                 </option>
                             @endforeach
@@ -36,14 +36,13 @@
                             name="brand_id">
                             <option  disabled selected>Select a Brand</option>
                             @foreach ($brands as $brand)
-                                <option value="{{ old('brand', $brand->id) }}">
+                                <option value="{{ old('brand', $brand->id) }}" @selected($category->id == old('category'))>
                                     {{ $brand->name }}
                                 </option>
                             @endforeach
 
                         </select>
                     </div>
-
 
                     <div class="col-md-12">
                         <label class="form-label" for="name">Key Feature (seperate multiple with comma)</label>
@@ -52,14 +51,14 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label" for="amount">Amount</label>
+                        <label class="form-label" for="amount">Base Amount</label>
                         <input type="text" id="amount" name="amount" value="{{ old('amount') }}" class="form-control"
                             placeholder="1000" required />
                     </div>
 
 
                     <div class="col-md-6">
-                        <label class="form-label" for="amount">Discount Amount</label>
+                        <label class="form-label" for="amount">Selling Amount</label>
                         <input type="text" id="discount_amount" name="discount_amount" value="{{ old('discount_amount') }}" class="form-control"
                             placeholder="9000" required />
                     </div>

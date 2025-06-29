@@ -1,104 +1,91 @@
 <x-layouts.app>
+
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card mb-6">
-            <h5 class="card-header">Edit Property</h5>
+            <h5 class="card-header">Add Product</h5>
             <x-alert />
-            <form class="card-body" action="{{ route('admin.listings.update', $listing->id) }}" method="POST"
+            <form class="card-body" action="{{ route('admin.products.store') }}" method="POST"
                 enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
 
+                @csrf
                 <div class="row g-6">
                     <div class="col-md-12">
                         <label class="form-label" for="name">Name</label>
-                        <input type="text" id="name" name="name" value="{{ old('name', $listing->name) }}"
-                            class="form-control" placeholder="Property Name" required />
+                        <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control"
+                            placeholder="Product Name" required />
                     </div>
 
-                    <div class="row pt-3">
-                        <div class="col-md-6">
-                            <label class="form-label" for="name">City</label>
-                            <input type="text" id="name" name="city" value="{{ old('city', $listing->city) }}"
-                                class="form-control" placeholder="City" required />
-                        </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="tag">Product Category</label>
+                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example"
+                            name="category_id">
+                            <option disabled selected>Select a Category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ old('category', $category->id) }}"
+                                    @selected($category->id == old('category'))>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
 
-                        <div class="col-md-6">
-                            <label class="form-label" for="amount">Amount</label>
-                            <input type="text" id="amount" name="amount" value="{{ old('amount', $listing->amount) }}"
-                                class="form-control" placeholder="1000" required />
-                        </div>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="tag">Product Brand</label>
+                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example"
+                            name="brand_id">
+                            <option disabled selected>Select a Brand</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{ old('brand', $brand->id) }}" @selected($category->id == old('category'))>
+                                    {{ $brand->name }}
+                                </option>
+                            @endforeach
+
+                        </select>
                     </div>
 
                     <div class="col-md-12">
-                        <label class="form-label" for="address">Address</label>
-                        <input type="text" id="address" name="address" value="{{ old('address', $listing->address) }}"
-                            class="form-control" placeholder="Enter address" required />
+                        <label class="form-label" for="name">Key Feature (seperate multiple with comma)</label>
+                        <input type="text" id="key_feature" name="key_feature" value="{{ old('key_feature') }}"
+                            class="form-control" placeholder="256GB Storage, A17 Pro Chip" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="amount">Base Amount</label>
+                        <input type="text" id="amount" name="amount" value="{{ old('amount') }}" class="form-control"
+                            placeholder="1000" required />
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="amount">Selling Amount</label>
+                        <input type="text" id="discount_amount" name="discount_amount"
+                            value="{{ old('discount_amount') }}" class="form-control" placeholder="9000" required />
                     </div>
 
                     <div class="col-md-12">
                         <div>
                             <label for="exampleFormControlTextarea1" class="form-label">Description</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"
-                                placeholder="Enter property description"
-                                required>{{ old('description', $listing->description) }}</textarea>
+                                placeholder="Enter product description" required>{{ old('description') }}</textarea>
                         </div>
                     </div>
 
                     <div class="col-md-12">
-                        <label class="form-label" for="property_type">Property Type</label>
-
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example"
-                            name="property_type">
-                            @foreach ($propertyTypes as $type)
-                                <option value="{{ old('property_type', $type->value) }}" @selected(
-                                    $type->value ==
-                                    $listing->property_type
-                                )>
-                                    {{ $type->name }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <label for="formFile" class="form-label">Product Image Thumbnail</label>
+                        <input class="form-control" type="file" name="image" id="formFile" required />
                     </div>
 
                     <div class="col-md-12">
-                        <label class="form-label" for="video_url">Video Url</label>
-                        <input type="text" id="name" name="video_url"
-                            value="{{ old('video_url', $listing->video_url) }}" class="form-control"
-                            placeholder="Video Url" required />
-                    </div>
-
-                    <div class="row pt-3">
-                        <div class="col-md-6">
-                            <label class="form-label" for="tags">Tags</label>
-                            <input type="text" id="tags" name="tags" value="{{ old('tags', $listing->tags) }}"
-                                class="form-control" placeholder="4 bed, 1000 sq ft" />
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="exampleFormControlSelect1" class="form-label">Intervals</label>
-                            <select class="form-select" id="exampleFormControlSelect1"
-                                aria-label="Default select example" name="intervals">
-                                <option value="month" @selected($listing->intervals == "month")>Month</option>
-                                <option value="year" @selected($listing->intervals == "year")>Year</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
                         <label class="form-label" for="units_left">Units Left</label>
-                        <input type="text" id="units_left" name="units_left" value="{{ old('units_left') }}"
+                        <input type="number" id="address" name="units_left" value="{{ old('units_left') }}"
                             class="form-control" placeholder="Enter units left" required />
 
                         </select>
                     </div>
 
                     <div class="col-md-12">
-                        <label for="formFile" class="form-label">Property Image</label>
-                        <input class="form-control" type="file" name="image" id="formFile" />
-                    </div>
-
-                    <div class="col-md-12">
-                        <h6>Other Property Images</h6>
+                        <h6>Other Product Images</h6>
                         <div id="customDropzone" class="dropzone">
                             <h4>Drop files here or click to upload</h4>
                             <p class="text-muted">This support multiple file upload</p>
@@ -107,33 +94,18 @@
                         <div id="preview" class="preview-container"></div>
                     </div>
 
-                    <div class="row pt-4">
-                        <div class="col-md-6">
-                            <label class="form-label" for="tag">Property Status</label>
-                            <select class="form-select" id="exampleFormControlSelect1"
-                                aria-label="Default select example" name="status">
-                                @foreach ($listingStatus as $status)
-                                    <option value="{{ $status->value }}" @selected($status->value == $listing->status)>
-                                        {{ $status->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="exampleFormControlSelect1" class="form-label">Status</label>
-                            <select class="form-select" id="exampleFormControlSelect1"
-                                aria-label="Default select example" name="is_active">
-                                <option value="1" @selected($listing->is_active == 1)>Active</option>
-                                <option value="0" @selected($listing->is_active == 0)>Inactive</option>
-                            </select>
-                        </div>
+                    <div class="col-md-6">
+                        <label for="exampleFormControlSelect1" class="form-label">Status</label>
+                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example"
+                            name="is_active">
+                            <option value="1" @selected($listing->is_active == 1)>Active</option>
+                            <option value="0" @selected($listing->is_active == 0)>Inactive</option>
+                        </select>
                     </div>
-
 
                 </div>
 
-                <div class="pt-6">
+                <div class="mt-4">
                     <button type="submit" class="btn btn-primary me-4">Submit</button>
                     <button type="reset" class="btn btn-label-secondary">Cancel</button>
                 </div>

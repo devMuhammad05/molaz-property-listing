@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::isActive()->paginate(20);
+        $products = Product::isActive()->with(['category', 'brand'])->paginate(20);
         return view('admin.product.index', compact('products'));
     }
 
@@ -81,8 +81,9 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Product::find($id);
-        $categories = Category::cases();
-        return view("admin.product.edit", compact('product', 'categories'));
+        $categories = Category::all();
+        $brands = Brand::all();
+        return view("admin.product.edit", compact('product', 'categories', 'brands'));
     }
 
     /**

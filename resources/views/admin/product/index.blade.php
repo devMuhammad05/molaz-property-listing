@@ -9,19 +9,7 @@
                         </div>
                         <div class="dt-action-buttons text-end pt-6 pt-md-0">
                             <div class="dt-buttons btn-group flex-wrap">
-                                {{-- <div class="btn-group">
-                                    <button
-                                        class="btn btn-secondary buttons-collection dropdown-toggle btn-label-primary me-4 waves-effect waves-light border-none"
-                                        tabindex="0" aria-controls="DataTables_Table_0" type="button"
-                                        aria-haspopup="dialog" aria-expanded="false">
-                                        <span>
-                                            <i class="ti ti-file-export ti-xs me-sm-1"></i>
-                                            <span class="d-none d-sm-inline-block">
-                                                Export
-                                            </span>
-                                        </span>
-                                    </button>
-                                </div> --}}
+ 
                                 <a href="{{ route('admin.products.create') }}"
                                     class="btn btn-secondary create-new btn-primary waves-effect waves-light">
                                     <span>
@@ -43,9 +31,11 @@
                                 <th>SN</th>
                                 <th>Name</th>
                                 <th>image</th>
-                                <th>Description</th>
-                                <th>Amount</th>
-                                <th>Condition</th>
+                                <th>Base Amount</th>
+                                <th>Selling Amount</th>
+                                <th>Category</th>
+                                <th>Brand</th>
+                                <th>Key Feature</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -55,9 +45,11 @@
                                     <td>{{ $count + 1 }}</td>
                                     <td>{{ $product->name }} </td>
                                     <td> <img src="{{ asset($product->image) }}" width="100" height="80" alt=""> </td>
-                                    <td>{{ $product->description }}</td>
                                     <td>{{ number_format($product->amount, 2) }}</td>
-                                    <td>{{ $product->condition }}</td>
+                                    <td>{{ number_format($product->discount_amount, 2) }}</td>
+                                    <td>{{ $product->category->name }}</td>
+                                    <td>{{ $product->brand->name }}</td>
+                                    <td>{{ $product->key_feature }}</td>
                                     <td>
                                         <div class="dropdown text-center">
                                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
