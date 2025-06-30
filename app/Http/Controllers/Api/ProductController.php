@@ -14,12 +14,15 @@ class ProductController extends Controller
     {
         $query = Product::query();
 
-        // Apply isActive scope
         $query->isActive();
 
         // Optional filtering by category
         if ($request->filled('category')) {
-            $query->where('category', $request->category);
+            $query->where('category_id', $request->category);
+        }
+
+        if ($request->filled('brand')) {
+            $query->where('brand_id', $request->brand);
         }
 
         $perPage = min($request->integer('per_page', 9), 30);
