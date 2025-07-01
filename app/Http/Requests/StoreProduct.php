@@ -25,7 +25,7 @@ class StoreProduct extends FormRequest
             'name' => ['required', 'string', 'max:255', 'unique:products,name'],
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'brand_id' => ['required', 'integer', 'exists:brands,id'],
-            'description' => ['required', 'string', 'max:600'],
+            'description' => ['required', 'string', 'max:1000'],
             'key_feature' => ['nullable', 'string', 'max:255'],
             'image' => ['required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
             'amount' => ['required', 'numeric'],
